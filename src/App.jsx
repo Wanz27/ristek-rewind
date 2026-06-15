@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-// Set your event date here
-const TARGET_DATE = new Date('2026-08-17T19:00:00')
+// 25 Juni 2026 pukul 18:00 WIB (UTC+7) => 11:00 UTC
+const TARGET_DATE = new Date('2026-06-25T11:00:00Z')
 
 function getTimeLeft() {
   const diff = TARGET_DATE - Date.now()
-  if (diff <= 0) return { h: 0, m: 0, s: 0 }
+  if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 }
   return {
-    h: Math.floor(diff / 3_600_000),
+    d: Math.floor(diff / 86_400_000),
+    h: Math.floor((diff % 86_400_000) / 3_600_000),
     m: Math.floor((diff % 3_600_000) / 60_000),
     s: Math.floor((diff % 60_000) / 1_000),
   }
@@ -19,7 +20,7 @@ function pad(n) {
 }
 
 export default function App() {
-  const [time, setTime] = useState(getTimeLeft)
+  const [time, setTime] = useState(getTimeLeft())
 
   useEffect(() => {
     const id = setInterval(() => setTime(getTimeLeft()), 1000)
@@ -52,10 +53,27 @@ export default function App() {
         <div className="card">
           <div className="card-header">
             <span className="card-label">Countdown</span>
-            <span className="card-exclaim">!</span>
           </div>
           <div className="timer">
-            {pad(time.h)}:{pad(time.m)}
+            <span className="time-unit">
+              <span className="time-value">{pad(time.d)}</span>
+              <span className="time-label">Hari</span>
+            </span>
+            <span className="time-sep">:</span>
+            <span className="time-unit">
+              <span className="time-value">{pad(time.h)}</span>
+              <span className="time-label">Jam</span>
+            </span>
+            <span className="time-sep">:</span>
+            <span className="time-unit">
+              <span className="time-value">{pad(time.m)}</span>
+              <span className="time-label">Menit</span>
+            </span>
+            <span className="time-sep">:</span>
+            <span className="time-unit">
+              <span className="time-value">{pad(time.s)}</span>
+              <span className="time-label">Detik</span>
+            </span>
           </div>
         </div>
       </div>

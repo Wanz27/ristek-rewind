@@ -34,22 +34,22 @@
 .deco-rewind-btn {
   top: 16px;
   right: 20px;
-  width: 68px;
+  width: 110px;
 }
 
-/* Asterisk stars, left side, vertically centered */
+/* Asterisk stars, bottom-left, sejajar dengan wave */
 .deco-asterisks {
-  left: 16px;
-  top: 55%;
-  transform: translateY(-50%);
-  width: 72px;
+  left: 12px;
+  bottom: 12px;
+  width: 140px;
 }
 
 /* Blue zigzag wave, bottom-right */
 .deco-wave {
-  bottom: 12px;
-  right: 12px;
+  bottom: 60px;
+  right: 30px;
   width: 148px;
+  transform: rotate(45deg);
 }
 
 /* ─── Main content ────────────────────────────────────────────────────────── */
@@ -67,6 +67,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
+  position: relative;
 }
 
 /* RISTEK wordmark — wider to be more prominent */
@@ -76,11 +77,13 @@
   display: block;
 }
 
-/* REWIND badge below the wordmark */
+/* REWIND badge — overlapping bottom-right of RISTEK wordmark */
 .rewind-label {
   width: min(35vw, 158px);
-  margin-top: -4px;
   display: block;
+  position: absolute;
+  bottom: 8px;
+  right: min(6vw, 40px);
 }
 
 /* ─── Countdown card (Neo-Brutalism) ─────────────────────────────────────── */
@@ -89,42 +92,67 @@
   border: 4px solid #111;
   border-radius: 20px;
   box-shadow: 7px 7px 0 #111;
-  padding: 16px 52px 20px;
-  width: min(90vw, 565px);
+  padding: 18px 32px 24px;
+  width: min(92vw, 680px);
   text-align: center;
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2px;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 
 .card-label {
   font-family: 'DynaPuff', cursive;
   color: #fff;
-  font-size: clamp(0.8rem, 1.3vw, 1.05rem);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-
-.card-exclaim {
-  font-family: 'DynaPuff', cursive;
-  color: #d1fe1e;
-  font-size: clamp(0.95rem, 1.5vw, 1.35rem);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 /* ─── Timer display ───────────────────────────────────────────────────────── */
 .timer {
   font-family: 'DynaPuff', cursive;
-  font-size: clamp(54px, 9.5vw, 105px);
   font-weight: 700;
   color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-value {
+  font-size: clamp(36px, 6.5vw, 82px);
   line-height: 1;
   letter-spacing: 0.04em;
   text-shadow:
     0 4px 0 rgba(0, 0, 0, 0.12),
     0 8px 16px rgba(0, 0, 0, 0.07);
+}
+
+.time-label {
+  font-size: clamp(10px, 1.4vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #d1fe1e;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.time-sep {
+  font-size: clamp(36px, 6.5vw, 82px);
+  line-height: 1;
+  padding: 0 clamp(4px, 1vw, 12px);
+  text-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 28px;
 }
