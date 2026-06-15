@@ -1,7 +1,7 @@
 /* ─── Page shell ──────────────────────────────────────────────────────────── */
 .page {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* dvh accounts for mobile browser chrome */
   background-color: #f05af5;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
@@ -12,7 +12,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* push content above geometric center so card lands ~55-60% from top */
   padding-bottom: 18vh;
 }
 
@@ -155,4 +154,73 @@
   text-shadow:
     0 4px 0 rgba(0, 0, 0, 0.12);
   margin-bottom: 28px;
+}
+
+/* ─── Mobile responsive ───────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .page {
+    padding-bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content {
+    gap: 6px;
+    width: 90vw;
+  }
+
+  /* Scale down decorative elements */
+  .deco-swirl {
+    width: 130px;
+    top: -30px;
+    left: -40px;
+  }
+
+  .deco-rewind-btn {
+    width: 72px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .deco-asterisks {
+    width: 90px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .deco-wave {
+    width: 90px;
+    bottom: 30px;
+    right: 16px;
+  }
+
+  /* Timer scales via vw on mobile */
+  .time-value {
+    font-size: clamp(28px, 8.5vw, 56px);
+  }
+
+  .time-sep {
+    font-size: clamp(28px, 8.5vw, 56px);
+    margin-bottom: 20px;
+    padding: 0 clamp(2px, 1.5vw, 8px);
+  }
+
+  .time-label {
+    font-size: clamp(8px, 2.2vw, 13px);
+    margin-top: 4px;
+  }
+
+  .card-label {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  }
+
+  .card {
+    padding: 14px 16px 18px;
+  }
+
+  .rewind-label {
+    width: min(38vw, 130px);
+    right: min(4vw, 16px);
+    bottom: 6px;
+  }
 }
