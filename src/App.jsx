@@ -51,7 +51,7 @@ export default function App() {
         {/* Neo-brutalism countdown card */}
         <div className="card">
           <div className="card-header">
-            <span className="card-label">Coutdown</span>
+            <span className="card-label">Countdown</span>
             <span className="card-exclaim">!</span>
           </div>
           <div className="timer">
